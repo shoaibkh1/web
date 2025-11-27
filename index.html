@@ -62,6 +62,16 @@
         .nav-item:hover { color: white; background: rgba(255,255,255,0.1); }
         .nav-item.active { background: white; color: black; font-weight: 700; }
 
+        /* --- FOOTER & FLOATING --- */
+        footer { position: fixed; bottom: 0; left: 0; width: 100%; padding: 20px 50px; background: rgba(0,0,0,0.95); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+        .socials { display: flex; gap: 20px; font-size: 1.2rem; }
+        .socials a { color: #888; transition: 0.3s; } .socials a:hover { color: var(--accent); }
+        .book-btn { background: var(--accent); color: black; padding: 10px 25px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+        .book-btn:hover { background: white; box-shadow: 0 0 20px var(--accent); }
+
+        .float-wa { position: fixed; right: 30px; bottom: 100px; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; transition: 0.3s; z-index: 500; border: 1px solid rgba(255,255,255,0.1); background: #25D366; }
+        .float-wa:hover { transform: scale(1.1); }
+
         /* --- MOBILE --- */
         @media (max-width: 800px) {
             .marquee-wrap { display: none; }
@@ -69,6 +79,7 @@
             .info-box { right: auto; bottom: -40px; width: 100%; text-align: center; }
             .nav-dock { width: 90%; justify-content: space-between; overflow-x: auto; bottom: 20px; }
             .nav-item { font-size: 0.75rem; padding: 8px 12px; }
+            footer { display: none; } /* Hide footer on mobile home to save space */
         }
     </style>
 </head>
@@ -82,15 +93,27 @@
         </div>
     </div>
 
+    <a href="https://wa.me/923105532979" class="float-wa hover-trig" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
     <div class="stage">
         <div class="card-3d" id="card">
-            <img src="SK.JPG" class="card-img" alt="Shoaib Khan">
+            <img src="./sk.jpg" class="card-img" alt="Shoaib Khan">
             <div class="info-box">
                 <h1>Shoaib<br>Khan</h1>
                 <div class="typewriter" id="typewriter"></div>
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="socials">
+            <a href="https://pk.linkedin.com/in/shoaibkh1" target="_blank" class="hover-trig"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://behance.net/skgraphics4" target="_blank" class="hover-trig"><i class="fab fa-behance"></i></a>
+            <a href="https://share.google/UTxeuYakVupmYcUzj" target="_blank" class="hover-trig"><i class="fab fa-google"></i></a>
+        </div>
+        <div style="color:#666; font-size:0.8rem;">© 2025 Shoaib Khan.</div>
+        <a href="https://wa.me/923105532979?text=I%20want%20to%20book%20an%20appointment" target="_blank" class="book-btn hover-trig">Book Appointment</a>
+    </footer>
 
     <nav class="nav-dock">
         <a href="index.html" class="nav-item active hover-trig">Home</a>
@@ -140,6 +163,4 @@
         });
     </script>
 </body>
-
 </html>
-
