@@ -3,68 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <title>Process | Shoaib Khan</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* PASTE CSS FROM PORTFOLIO.HTML, THEN ADD: */
+        /* PASTE CSS FROM PORTFOLIO.HTML HERE */
         :root { --bg: #050505; --accent: #2997ff; --text: #ffffff; --surface: #111; --border: rgba(255, 255, 255, 0.1); }
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { background: var(--bg); color: var(--text); font-family: 'General Sans', sans-serif; padding: 50px 5% 300px 5%; min-height: 100vh; }
-        
+        /* [Include all shared CSS from Portfolio here: Cursor, Nav, Footer, etc.] */
         .cursor { position: fixed; top:0; left:0; width: 10px; height: 10px; background: white; border-radius: 50%; pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); mix-blend-mode: difference; }
         .cursor-f { position: fixed; top:0; left:0; width: 40px; height: 40px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: 0.15s; }
+        @media (hover: none) { .cursor, .cursor-f { display: none; } }
         header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; }
         h1 { font-family: 'Clash Display'; font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; }
-        .back-btn { border: 1px solid var(--border); padding: 10px 25px; border-radius: 50px; color: #888; text-decoration: none; transition: 0.3s; }
-        .back-btn:hover { border-color: var(--accent); color: white; background: rgba(41, 151, 255, 0.1); }
-        footer { position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px 50px; background: rgba(0,0,0,0.95); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; z-index: 400; }
-        .socials { display: flex; gap: 20px; font-size: 1.2rem; }
-        .socials a { color: #888; transition: 0.3s; text-decoration: none; } .socials a:hover { color: var(--accent); }
-        .book-btn { background: var(--accent); color: black; padding: 10px 25px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
-        .book-btn:hover { background: white; box-shadow: 0 0 20px var(--accent); }
-        .nav-dock { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; background: rgba(20,20,20,0.9); backdrop-filter: blur(15px); padding: 10px 15px; border-radius: 50px; border: 1px solid var(--border); z-index: 500; }
-        .nav-item { color: #aaa; text-decoration: none; padding: 10px 20px; border-radius: 30px; transition: 0.3s; font-weight: 500; font-size: 0.9rem; }
-        .nav-item:hover { color: white; background: rgba(255,255,255,0.1); }
-        .nav-item.active { background: white; color: black; font-weight: 700; }
-        .float-wa { position: fixed; right: 30px; bottom: 100px; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; transition: 0.3s; z-index: 600; border: 1px solid rgba(255,255,255,0.1); background: #25D366; text-decoration: none; }
-        .float-wa:hover { transform: scale(1.1); }
-
+        .back-btn { border: 1px solid var(--border); padding: 10px 25px; border-radius: 50px; color: #888; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+        
         .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .step-card { background: rgba(255,255,255,0.03); padding: 40px; border-radius: 20px; border: 1px solid var(--border); position: relative; transition: 0.3s; }
-        .step-card:hover { transform: translateY(-10px); border-color: var(--accent); background: rgba(41, 151, 255, 0.05); }
         .num { font-size: 4rem; font-weight: 800; color: rgba(255,255,255,0.05); position: absolute; top: 20px; right: 20px; }
         h3 { font-family: 'Clash Display'; font-size: 1.5rem; margin-bottom: 15px; }
         p { color: #888; line-height: 1.6; }
+
+        .nav-dock { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; background: rgba(20,20,20,0.9); backdrop-filter: blur(15px); padding: 10px 15px; border-radius: 50px; border: 1px solid var(--border); z-index: 500; }
+        .nav-item { color: #aaa; text-decoration: none; padding: 10px 20px; border-radius: 30px; transition: 0.3s; font-weight: 500; font-size: 0.9rem; white-space: nowrap; }
+        .nav-item.active { background: white; color: black; font-weight: 700; }
         
-        @media(max-width: 768px) { body { padding-bottom: 250px; } footer { flex-direction: column; gap: 10px; padding: 15px; text-align: center; } .steps { grid-template-columns: 1fr; } .nav-dock { width: 95%; overflow-x: auto; bottom: 80px; } .float-wa { bottom: 150px; right: 20px; } }
+        footer { position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px 50px; background: rgba(0,0,0,0.95); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; z-index: 400; }
+        .socials { display: flex; gap: 20px; font-size: 1.2rem; }
+        .socials a { color: #888; transition: 0.3s; text-decoration: none; }
+        .book-btn { background: var(--accent); color: black; padding: 10px 25px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+        .float-wa { position: fixed; right: 30px; bottom: 100px; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; z-index: 600; border: 1px solid rgba(255,255,255,0.1); background: #25D366; text-decoration: none; }
+
+        @media(max-width: 900px) {
+            body { padding-bottom: 300px; }
+            footer { flex-direction: column; gap: 10px; padding: 15px; text-align: center; }
+            .steps { grid-template-columns: 1fr; }
+            .nav-dock { width: 95%; overflow-x: auto; bottom: 80px; }
+            .float-wa { bottom: 150px; right: 20px; }
+        }
     </style>
 </head>
 <body>
     <div class="cursor"></div><div class="cursor-f"></div>
-    <a href="https://wa.me/923105532979" class="float-wa hover-trig" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/923105532979" class="float-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <header>
         <h1>Workflow</h1>
-        <a href="index.html" class="back-btn hover-trig">Back Home</a>
+        <a href="index.html" class="back-btn">Back Home</a>
     </header>
 
     <div class="steps">
-        <div class="step-card hover-trig">
+        <div class="step-card">
             <span class="num">01</span>
             <h3>Discovery</h3>
             <p>We discuss your brand goals, target audience, and technical specs.</p>
         </div>
-        <div class="step-card hover-trig">
+        <div class="step-card">
             <span class="num">02</span>
             <h3>Strategy</h3>
             <p>I research competitors and sketch concepts. For packaging, I create structural die-lines.</p>
         </div>
-        <div class="step-card hover-trig">
+        <div class="step-card">
             <span class="num">03</span>
             <h3>Design</h3>
             <p>I create high-fidelity vector drafts. You receive 3 options to choose from.</p>
         </div>
-        <div class="step-card hover-trig">
+        <div class="step-card">
             <span class="num">04</span>
             <h3>Delivery</h3>
             <p>Final files (AI, PDF, EPS, PNG) ready for print production or digital launch.</p>
@@ -72,35 +77,33 @@
     </div>
 
     <nav class="nav-dock">
-        <a href="index.html" class="nav-item hover-trig">Home</a>
-        <a href="services.html" class="nav-item hover-trig">Services</a>
-        <a href="portfolio.html" class="nav-item hover-trig">Work</a>
-        <a href="process.html" class="nav-item active hover-trig">Process</a>
-        <a href="about.html" class="nav-item hover-trig">About</a>
-        <a href="https://share.google/UTxeuYakVupmYcUzj" target="_blank" class="nav-item hover-trig" style="color:var(--accent)">Reviews</a>
-        <a href="contact.html" class="nav-item hover-trig">Contact</a>
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="services.html" class="nav-item">Services</a>
+        <a href="portfolio.html" class="nav-item">Work</a>
+        <a href="process.html" class="nav-item active">Process</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="https://share.google/UTxeuYakVupmYcUzj" target="_blank" class="nav-item" style="color:var(--accent)">Reviews</a>
+        <a href="contact.html" class="nav-item">Contact</a>
     </nav>
 
     <footer>
         <div class="socials">
-            <a href="https://pk.linkedin.com/in/shoaibkh1" target="_blank" class="hover-trig"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://behance.net/skgraphics4" target="_blank" class="hover-trig"><i class="fab fa-behance"></i></a>
-            <a href="https://share.google/UTxeuYakVupmYcUzj" target="_blank" class="hover-trig"><i class="fab fa-google"></i></a>
+            <a href="https://pk.linkedin.com/in/shoaibkh1" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://behance.net/skgraphics4" target="_blank"><i class="fab fa-behance"></i></a>
+            <a href="https://share.google/UTxeuYakVupmYcUzj" target="_blank"><i class="fab fa-google"></i></a>
         </div>
         <div style="color:#666; font-size:0.8rem;">© 2025 Shoaib Khan.</div>
-        <a href="https://wa.me/923105532979?text=I%20want%20to%20book%20an%20appointment" target="_blank" class="book-btn hover-trig">Book Appointment</a>
+        <a href="https://wa.me/923105532979?text=I%20want%20to%20book%20an%20appointment" target="_blank" class="book-btn">Book Appointment</a>
     </footer>
 
     <script>
-        const cursor = document.querySelector('.cursor'); const cursorF = document.querySelector('.cursor-f');
-        window.addEventListener('mousemove', e => { 
-            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-            cursorF.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`; 
-        });
-        document.querySelectorAll('.hover-trig').forEach(el => {
-            el.addEventListener('mouseenter', () => { cursorF.style.transform += " scale(1.5)"; cursorF.style.background = "rgba(255,255,255,0.1)"; });
-            el.addEventListener('mouseleave', () => { cursorF.style.transform = cursorF.style.transform.replace(" scale(1.5)", ""); cursorF.style.background = "transparent"; });
-        });
+        if (window.matchMedia("(hover: hover)").matches) {
+            const cursor = document.querySelector('.cursor'); const cursorF = document.querySelector('.cursor-f');
+            window.addEventListener('mousemove', e => { 
+                cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+                cursorF.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`; 
+            });
+        }
     </script>
 </body>
 </html>
